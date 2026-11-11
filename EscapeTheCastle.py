@@ -3,9 +3,9 @@ print("===ESCAPE THE CASTLE===")
 print("Welcome, adventurer!")
 
 #Get the player name, age and character class
-charName = input("What is it that people call you? ")
-charAge = int(input("How many years have you lived? "))
-charClass = input("What type of adventurer are you? ")
+charName = input("\nWhat is it that people call you? ")
+charAge = int(input("\nHow many years have you lived? "))
+charClass = input("\nWhat type of adventurer are you? ")
 
 #Set starting values
 health = 3
@@ -47,6 +47,30 @@ if choice == "door":
 elif choice == "window":
     print("You approach the window and see that it is barred. It won't open.")
 elif choice == "bed":
-    print("You approach the bed and see that it is old and dusty. You find a small key hidden under the pillow.")
+    print("You approach the bed and see that it is old and dusty. You find a small iron key hidden under the pillow.")
 else:
     print("You decide not to investigate anything and remain in the cell.")
+
+
+# ==========================================
+# ESCAPE THE CASTLE - SCENE 2: THE CORRIDOR
+# ==========================================
+
+#Create a list to hold the player's inventory
+#We are assuming that the player has found the key in the previous scene, we will add it to their inventory
+inventory = ["Iron Key"]
+
+#Introduce the scene to the player
+print("\nYou manage to unlock the door and step into a long, dark corridor.")
+print("You notice an old wooden cabinet against the wall and a torch on the wall that is still burning.")
+
+choice = input("What would you like to investigate the cabinet? (Yes/No) ").lower()
+
+if choice == "yes":
+    print("You open the cabinet and find a dull rusty dagger inside.")
+    print("You take the rust dagger and add it to your inventory.")
+    inventory.append("Rust Dagger")
+elif choice == "no":
+    print("You decide not to investigate the cabinet, leaving it closed and continue down the corridor.")
+
+print(f"\nYour inventory now contains: {inventory}")
