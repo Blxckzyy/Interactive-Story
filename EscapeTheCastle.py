@@ -1,3 +1,5 @@
+import random
+
 #Welcome the player
 print("===ESCAPE THE CASTLE===")
 print("Welcome, adventurer!")
@@ -74,3 +76,33 @@ elif choice == "no":
     print("You decide not to investigate the cabinet, leaving it closed and continue down the corridor.")
 
 print(f"\nYour inventory now contains: {inventory}")
+
+# ==========================================
+# ESCAPE THE CASTLE - CORRIDOR ENCOUNTER
+# ==========================================
+ 
+
+def encounter(creature):
+    print(f"A {creature} appears!!")
+
+    if creature == "guard":
+        print("The Guard draws their sword")
+
+    elif creature == "ghost":
+        print("The ghost floats towards you")
+    elif creature == "sphinx":
+        print("The Sphinx spots you and starts charging in your direction")
+
+#define the corridor scene
+def corridor():
+    print("You walk down a dark castle corridor. \nYou hear a strange noise ahead...")
+
+    creatures = ["Guard", "Ghost", "Sphinx"]
+
+    random_creature = random.choice(creatures).lower()
+    encounter(random_creature)
+
+#Start the scene
+corridor()
+
+
