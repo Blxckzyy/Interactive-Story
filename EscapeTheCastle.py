@@ -64,7 +64,8 @@ def cell(hasKey):
             hasKey = True
         else:
             print("You decide not to investigate anything and remain in the cell.")
-            break
+            game_over()
+            
     print("\nYou unlocked the cell door")
     print("You step out into the corridor.")
     print(f"Your inventory: {inventory}")
