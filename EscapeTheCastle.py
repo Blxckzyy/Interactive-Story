@@ -1,50 +1,57 @@
 import random
-
-#Welcome the player
-print("===ESCAPE THE CASTLE===")
-print("Welcome, adventurer!")
-
-#Get the player name, age and character class
-charName = input("\nWhat is it that people call you? ")
-charAge = int(input("\nHow many years have you lived? "))
-charClass = input("\nWhat type of adventurer are you? ")
-
+import sys
 #Set starting values
 health = 3
 gold = 20
 hasKey = False
-
-#Display the character profile
-print("\n=== YOUR CHARACTER ===")
-print(f"Name: {charName}")
-print(f"Age: {charAge}")
-print(f"Class: {charClass}")
-print(f"Health: {health}")
-print(f"Gold: {gold}")
-print(f"Has Key: {hasKey}")
-
-#Begin the story
-print(f"\n{charName} ,you find yourself beat and bruised in a dark damp castle") 
-print("  You hear the sound of fooststeps appoaching, you must make a decision quickly!")
-print("  Your adventure begins now, choose wisely and you may escape the castle alive!")
-
-
-
-# ==========================================
-# ESCAPE THE CASTLE - SCENE 1: THE CELL
-# ==========================================
-
 inventory = []
+#Welcome the player
+
+def game_over():
+    print("\nGame Over. Thanks for playing Escape the Castle!")
+    sys.exit()  # Immediately stops the entire Python program
+
+def win_screen():
+    print("\nYou have successfully Escaped the Castle. Congratulations!")
+    sys.exit()  # Immediately stops the entire Python program
+
+def introduction():
+    print("\n\n===ESCAPE THE CASTLE===")
+    print("Welcome, adventurer!")
+
+    #Get the player name, age and character class
+    charName = input("\nWhat is it that people call you? ")
+    charAge = int(input("\nHow many years have you lived? "))
+    charClass = input("\nWhat type of adventurer are you? ")
+
+
+
+    #Display the character profile
+    print("\n=== YOUR CHARACTER ===")
+    print(f"Name: {charName}")
+    print(f"Age: {charAge}")
+    print(f"Class: {charClass}")
+    print(f"Health: {health}")
+    print(f"Gold: {gold}")
+    print(f"Has Key: {hasKey}")
+
+    # Begin the story
+    print(f"\n{charName}, your eyes flutter open. You are battered, bruised, and lying on the cold stone floor of a dark, damp castle.")
+    print("Your adventure begins now. Choose wisely, and you might just escape this place alive...")
+
 
 def cell(hasKey):
-    #Introduce the scene to the player
-    print("You wake up in a dark cell, you have no memory of how you got there.")
-    print("You can see a door, a window and an old bed in the corner of the room.")
-
+    # ==========================================
+    # ESCAPE THE CASTLE - SCENE 1: THE CELL
+    #===========================================
+    # Introduce the scene to the player
+    print("\n\nPanic sets in as you realize you have no memory of how you got here.")
+    print("As your eyes adjust to the gloom, you spot a heavy wooden door, a high barred window, and an old, rotting bed in the corner.")
+    print("Suddenly, the heavy thud of approaching footsteps echoes down the corridor outside. You need to act fast!")
     #Ask the player what they want to investigate
     #.lower() convets their answer to lowercase so that it can be compared to the options below
     while hasKey == False:
-        choice = input("What would you like to investigate? Will it be the door, window or bed? ").lower()
+        choice = input("\nWhat would you like to investigate? Will it be the door, window or bed? ").lower()
 
         #Check whether the player has chosen the door, window or bed and respond accordingly
         if choice == "door":
@@ -61,56 +68,119 @@ def cell(hasKey):
     print("\nYou unlocked the cell door")
     print("You step out into the corridor.")
     print(f"Your inventory: {inventory}")
-cell(hasKey)
-# ==========================================
-# ESCAPE THE CASTLE - SCENE 2: THE CORRIDOR
-# ==========================================
 
-#Create a list to hold the player's inventory
-#We are assuming that the player has found the key in the previous scene, we will add it to their inventory
+    # ==========================================
+    # ESCAPE THE CASTLE - SCENE 2: THE CORRIDOR
+    # ==========================================
+
+    #Create a list to hold the player's inventory
+    #We are assuming that the player has found the key in the previous scene, we will add it to their inventory
 
 
-#Introduce the scene to the player
-print("\nYou manage to unlock the door and step into a long, dark corridor.")
-print("You notice an old wooden cabinet against the wall and a torch on the wall that is still burning.")
+    #Introduce the scene to the player
+    print("\nYou manage to unlock the door and step into a long, dark corridor.")
+    print("You notice an old wooden cabinet against the wall and a torch on the wall that is still burning.")
 
-choice = input("What would you like to investigate the cabinet? (Yes/No) ").lower()
+    choice = input("\nWhat would you like to investigate the cabinet? (Yes/No) ").lower()
 
-if choice == "yes":
-    print("You open the cabinet and find a dull rusty dagger inside.")
-    print("You take the rust dagger and add it to your inventory.")
-    inventory.append("Rust Dagger")
-elif choice == "no":
-    print("You decide not to investigate the cabinet, leaving it closed and continue down the corridor.")
+    if choice == "yes":
+        print("\nYou open the cabinet and find a dull rusty dagger inside.")
+        print("You take the rust dagger and add it to your inventory.")
+        inventory.append("Rust Dagger")
+    elif choice == "no":
+        print("\nYou decide not to investigate the cabinet, leaving it closed and continue down the corridor.")
 
-print(f"\nYour inventory now contains: {inventory}")
+    print(f"\nYour inventory now contains: {inventory}")
 
-# ==========================================
-# ESCAPE THE CASTLE - CORRIDOR ENCOUNTER
-# ==========================================
- 
 
-def encounter(creature):
-    print(f"A {creature} appears!!")
 
-    if creature == "guard":
-        print("The Guard draws their sword")
 
-    elif creature == "ghost":
-        print("The ghost floats towards you")
-    elif creature == "sphinx":
-        print("The Sphinx spots you and starts charging in your direction")
 
-#define the corridor scene
-def corridor():
+
+def corridor_encounter():
+        # ==========================================
+    # ESCAPE THE CASTLE - CORRIDOR ENCOUNTER
+    # ==========================================
+ #define the corridor scene
     print("You walk down a dark castle corridor. \nYou hear a strange noise ahead...")
 
     creatures = ["Guard", "Ghost", "Sphinx"]
 
     random_creature = random.choice(creatures).lower()
-    encounter(random_creature)
 
-#Start the scene
-corridor()
+    print(f"\nA {random_creature} appears!!")
 
+    if random_creature == "guard":
+        print("\nThe Guard draws their sword and charges towards you!")
+
+    elif random_creature == "ghost":
+        print("\nThe ghost floats towards you!")
+    elif random_creature == "sphinx":
+        print("\nThe Sphinx spots you and starts charging in your direction!")
+
+
+def clueBook():
+    print("To pass the final threshold, name the servant that follows you in the torchlight, grows tall at dusk, yet vanishes the moment you step into pitch darkness.")
+def library_choice():
+    while True:
+        choice2 = input("\nYou stumble across a book that is lay on a dusty table, would you like to read it? (Yes/No) ").lower()
+        if choice2 == "yes":
+            clueBook()
+            print("\nYou wonder what this could mean and take it with you.")
+            inventory.append("Mysterious book")
+            print(f"Your inventory now holds: {inventory}")
+            break  # Stops the loop once they read and take the book
+        else:
+            print("\nYou think this book could be an important item.")
+            print("Maybe you should take another look")
+            # Because there is no 'break' here, the loop goes back to the top and asks again!
+def library():
+    print("\nAfter continuing down the corridor, you are faced with a heavy door that you manage to open just enough to fit through the crack.")
+    print("A vast library spans as far as your eye can see.")
+    choice = input("\nWould you like to explore the library too see if there will be a clue to escape? (Yes/No) ").lower()
+    if choice == "yes":
+        library_choice()
+    elif choice == "no":
+        print("\nYou move past the library, but you can't shake this feeling of curiosity.")
+        choice3 = input("Do you let your curiosity get the better of you? (Yes/No) ").lower()
+        if choice3 == "yes":
+            library_choice()
+        else:
+            print("You get attacked by a Guard from behind.")
+            print("Running out of breath and bleeding out on the floor, your eyes slowly begin to close.")
+            game_over()
+
+
+def castle_gate():
+    print("\nYou leave the library and carry on down the long corridor")
+    print("You notice 2 dimply lit torches flickering in the stale air")
+    print("Guard: Halt! I dont know how you got here, but i will only let you pass if you tell me the correct password")
+    answer = input("So what is it? ").lower()
+    while answer != "shadow":
+        if answer == "shadow":
+            win_screen()
+        elif answer != "shadow":
+            print("That is incorrect!")
+            print("Would you like to:\nA: Try Again\nB:Read your book")
+            choice = input("Type 'A' for try again\nType 'B' to read your book\n").upper()
+            if choice == "A":
+                print("Guard: Halt! I dont know how you got here, but i will only let you pass if you tell me the correct password")
+                answer = input("So what is it? ").lower()
+            elif choice == "B":
+                clueBook()
+                print("Guard: Halt! I dont know how you got here, but i will only let you pass if you tell me the correct password")
+                answer = input("So what is it? ").lower()
+            else:
+                print("Escape isn't an option")
+    win_screen()
+
+
+#Start the game
+
+def playGame():
+    introduction()
+    cell(hasKey)
+    corridor_encounter()
+    library()
+    castle_gate()
 
