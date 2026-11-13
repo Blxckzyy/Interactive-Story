@@ -65,7 +65,7 @@ def cell(hasKey):
         else:
             print("You decide not to investigate anything and remain in the cell.")
             game_over()
-            
+
     print("\nYou unlocked the cell door")
     print("You step out into the corridor.")
     print(f"Your inventory: {inventory}")
@@ -82,7 +82,7 @@ def cell(hasKey):
     print("\nYou manage to unlock the door and step into a long, dark corridor.")
     print("You notice an old wooden cabinet against the wall and a torch on the wall that is still burning.")
 
-    choice = input("\nWhat would you like to investigate the cabinet? (Yes/No) ").lower()
+    choice = input("\nWould you like to investigate the cabinet? (Yes/No) ").lower()
 
     if choice == "yes":
         print("\nYou open the cabinet and find a dull rusty dagger inside.")
