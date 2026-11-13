@@ -34,33 +34,41 @@ print("  Your adventure begins now, choose wisely and you may escape the castle 
 # ESCAPE THE CASTLE - SCENE 1: THE CELL
 # ==========================================
 
+inventory = []
 
-#Introduce the scene to the player
-print("You wake up in a dark cell, you have no memory of how you got there.")
-print("You can see a door, a window and an old bed in the corner of the room.")
+def cell(hasKey):
+    #Introduce the scene to the player
+    print("You wake up in a dark cell, you have no memory of how you got there.")
+    print("You can see a door, a window and an old bed in the corner of the room.")
 
-#Ask the player what they want to investigate
-#.lower() convets their answer to lowercase so that it can be compared to the options below
-choice = input("What would you like to investigate? Will it be the door, window or bed? ").lower()
+    #Ask the player what they want to investigate
+    #.lower() convets their answer to lowercase so that it can be compared to the options below
+    while hasKey == False:
+        choice = input("What would you like to investigate? Will it be the door, window or bed? ").lower()
 
-#Check whether the player has chosen the door, window or bed and respond accordingly
-if choice == "door":
-    print("You approach the door and see that it is locked. You will need to find a key to open it.")
-elif choice == "window":
-    print("You approach the window and see that it is barred. It won't open.")
-elif choice == "bed":
-    print("You approach the bed and see that it is old and dusty. You find a small iron key hidden under the pillow.")
-else:
-    print("You decide not to investigate anything and remain in the cell.")
-
-
+        #Check whether the player has chosen the door, window or bed and respond accordingly
+        if choice == "door":
+            print("You approach the door and see that it is locked. You will need to find a key to open it.")
+        elif choice == "window":
+            print("You approach the window and see that it is barred. It won't open.")
+        elif choice == "bed":
+            print("You approach the bed and see that it is old and dusty.\nYou find a small iron key hidden under the pillow.")
+            inventory.append("Iron Key")
+            hasKey = True
+        else:
+            print("You decide not to investigate anything and remain in the cell.")
+            break
+    print("\nYou unlocked the cell door")
+    print("You step out into the corridor.")
+    print(f"Your inventory: {inventory}")
+cell(hasKey)
 # ==========================================
 # ESCAPE THE CASTLE - SCENE 2: THE CORRIDOR
 # ==========================================
 
 #Create a list to hold the player's inventory
 #We are assuming that the player has found the key in the previous scene, we will add it to their inventory
-inventory = ["Iron Key"]
+
 
 #Introduce the scene to the player
 print("\nYou manage to unlock the door and step into a long, dark corridor.")
