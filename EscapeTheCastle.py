@@ -150,7 +150,6 @@ def library():
             print("Running out of breath and bleeding out on the floor, your eyes slowly begin to close.")
             game_over()
 
-
 def castle_gate():
     print("\nYou leave the library and carry on down the long corridor")
     print("You notice 2 dimply lit torches flickering in the stale air")
@@ -184,3 +183,4 @@ def playGame():
     library()
     castle_gate()
 
+playGame()
