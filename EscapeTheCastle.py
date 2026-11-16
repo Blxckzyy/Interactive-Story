@@ -86,8 +86,8 @@ def cell(hasKey):
 
     if choice == "yes":
         print("\nYou open the cabinet and find a dull rusty dagger inside.")
-        print("You take the rust dagger and add it to your inventory.")
-        inventory.append("Rust Dagger")
+        print("You take the rusty dagger and add it to your inventory.")
+        inventory.append("Rusty Dagger")
     elif choice == "no":
         print("\nYou decide not to investigate the cabinet, leaving it closed and continue down the corridor.")
 
@@ -99,6 +99,7 @@ def cell(hasKey):
 
 
 def corridor_encounter():
+    global health
         # ==========================================
     # ESCAPE THE CASTLE - CORRIDOR ENCOUNTER
     # ==========================================
@@ -116,8 +117,34 @@ def corridor_encounter():
 
     elif random_creature == "ghost":
         print("\nThe ghost floats towards you!")
+
     elif random_creature == "sphinx":
         print("\nThe Sphinx spots you and starts charging in your direction!")
+
+    fightOrFlee = input("Would you like to fight or flee? ").lower()
+
+    if fightOrFlee == "fight":
+        if "Rusty Dagger" in inventory:
+            print("\nYou take your rusty dagger and lunge it at your enemy")
+            if random_creature == "ghost":
+                print("\nYour dagger went straight through it and had no effect.\nYou drop it and run!")
+                inventory.remove("Rusty Dagger")
+            elif random_creature == "guard":
+                health -= 1
+                print(f"\nThe impact sends a shockwave through your rusty dagger, shattering it and dealing damage to yourself. \nHealth: {health}")
+                print("Slightly injured, you run away!")
+                inventory.remove("Rusty Dagger")
+            elif random_creature == "sphinx":
+                health -= 1
+                print(f"\nThe impact sends a shockwave through your rusty dagger, shattering it and dealing damage to yourself. \nHealth: {health}")
+                print("Slightly injured, you run away!")
+                inventory.remove("Rusty Dagger")
+        else:
+            print("You are unarmed and weak, you will not be able to stand a chance. You decide its best to run away.")
+    elif fightOrFlee == "flee":
+        print("You run as fast as you can to get away!")
+
+
 
 
 def clueBook():
